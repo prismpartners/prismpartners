@@ -4,14 +4,7 @@ import { X, Menu } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-
-export const navLinks = [
-  { title: "Home", href: "/" },
-  { title: "Services", href: "/services" },
-  { title: "Projects", href: "/projects" },
-  { title: "About", href: "/about" },
-  { title: "Contact", href: "/contact" },
-];
+import { navLinks } from "@/lib/constants";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
