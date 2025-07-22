@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 
-const navLinks = [
+export const navLinks = [
   { title: "Home", href: "/" },
   { title: "Services", href: "/services" },
   { title: "Projects", href: "/projects" },
@@ -45,7 +45,7 @@ export default function Header() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-gray-900 hover:text-[#E30613] transition-colors font-medium"
+                className="text-gray-900 hover:text-primary transition-colors font-medium"
               >
                 {link.title}
               </Link>
@@ -55,7 +55,7 @@ export default function Header() {
           {/* CTA Button */}
           <div className="hidden md:block">
             <Link href="/quote">
-              <button className="bg-[#E30613] text-white px-6 py-2 rounded-lg font-semibold hover:bg-[#C5050F] transition-colors hover:cursor-pointer">
+              <button className="bg-primary text-white px-6 py-2 rounded-lg font-semibold hover:bg-[#C5050F] transition-colors hover:cursor-pointer">
                 Get Free Quote
               </button>{" "}
             </Link>
@@ -65,7 +65,7 @@ export default function Header() {
           <div className="md:hidden">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="text-gray-900 hover:text-[#E30613] transition-colors"
+              className="text-gray-900 hover:text-primary transition-colors"
             >
               {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
@@ -80,14 +80,14 @@ export default function Header() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="block px-3 py-2 text-gray-900 hover:text-[#E30613] transition-colors font-medium"
+                  className="block px-3 py-2 text-gray-900 hover:text-primary transition-colors font-medium"
                 >
                   {link.title}
                 </Link>
               ))}
 
               <Link href="/quote">
-                <button className="w-full mt-4 bg-[#E30613] text-white px-6 py-2 rounded-lg font-semibold hover:bg-[#C5050F] transition-colors">
+                <button className="w-full mt-4 bg-primary text-white px-6 py-2 rounded-lg font-semibold hover:bg-[#C5050F] transition-colors">
                   Get Free Quote
                 </button>
               </Link>
