@@ -1,3 +1,9 @@
+import HeroSection from "@/components/layout/home/hero";
+
 export default function Home() {
-  return <div className="">PrismPartners</div>;
+  return (
+    <>
+      <HeroSection />
+    </>
+  );
 }
