@@ -15,21 +15,23 @@ export default function Header() {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <Image
-              src="/logo-lg.png"
-              alt="Prism Partners"
-              width={273}
-              height={142}
-              className="h-18 w-auto hidden sm:block"
-            />
+            <Link href="/">
+              <Image
+                src="/logo-lg.png"
+                alt="Prism Partners"
+                width={273}
+                height={142}
+                className="h-18 w-auto hidden sm:block"
+              />
 
-            <Image
-              src="/logo-sm.png"
-              alt="Prism Partners"
-              width={273}
-              height={142}
-              className="h-12 w-auto block sm:hidden"
-            />
+              <Image
+                src="/logo-sm.png"
+                alt="Prism Partners"
+                width={273}
+                height={142}
+                className="h-12 w-auto block sm:hidden"
+              />
+            </Link>
           </div>
 
           {/* Desktop Navigation */}
@@ -48,7 +50,7 @@ export default function Header() {
           {/* CTA Button */}
           <div className="hidden md:block">
             <Link href="/quote">
-              <button className="bg-primary text-white px-6 py-2 rounded-lg font-semibold hover:bg-[#C5050F] transition-colors hover:cursor-pointer">
+              <button className="bg-primary text-white px-6 py-2 rounded-lg font-semibold hover:bg-destructive transition-colors hover:cursor-pointer">
                 Get Free Quote
               </button>{" "}
             </Link>
@@ -80,7 +82,7 @@ export default function Header() {
               ))}
 
               <Link href="/quote">
-                <button className="w-full mt-4 bg-primary text-white px-6 py-2 rounded-lg font-semibold hover:bg-[#C5050F] transition-colors">
+                <button className="w-full mt-4 bg-primary text-white px-6 py-2 rounded-lg font-semibold hover:bg-destructive transition-colors">
                   Get Free Quote
                 </button>
               </Link>
