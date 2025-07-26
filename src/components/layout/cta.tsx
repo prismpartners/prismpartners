@@ -1,3 +1,5 @@
+import { contactInfo } from "@/lib/constants";
+import { MessageCircle } from "lucide-react";
 import Link from "next/link";
 
 export default function CTA() {
@@ -15,6 +17,19 @@ export default function CTA() {
             Get Your Free Quote Now
           </button>
         </Link>
+      </div>
+
+      {/* Floating WhatsApp button as CTA */}
+      <div className="fixed bottom-6 right-6 z-50 block md:hidden">
+        <a
+          href={contactInfo.mobile.whatsappLink}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="bg-green-500 hover:bg-green-600 text-white p-3 rounded-full shadow-lg transition-all duration-300 hover:scale-110 flex items-center justify-center"
+          aria-label="Contact us on WhatsApp"
+        >
+          <MessageCircle className="w-5 h-5" />
+        </a>
       </div>
     </section>
   );

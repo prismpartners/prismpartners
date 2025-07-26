@@ -47,7 +47,7 @@ export const contactInfo = {
   ],
 };
 
-contactInfo.mobile.whatsappLink = `https://wa.me/${contactInfo.mobile.number}`;
+contactInfo.mobile.whatsappLink = `https://wa.me/88${contactInfo.mobile.number}`;
 contactInfo.mobile.formatted = formatNumber(contactInfo.mobile.number);
 
 function formatNumber(number: string) {
