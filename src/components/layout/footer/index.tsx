@@ -1,14 +1,12 @@
-import {
-  Facebook,
-  Twitter,
-  Instagram,
-  Linkedin,
-  Phone,
-  Mail,
-  MapPin,
-} from "lucide-react";
+import { Phone, Mail, MapPin } from "lucide-react";
 import Image from "next/image";
-import { navLinks, socialLinks as scLinks, contactInfo } from "@/lib/constants";
+import {
+  navLinks,
+  socialLinks as scLinks,
+  servicesLinks as svLinks,
+  contactInfo,
+  developerInfo,
+} from "@/lib/constants";
 import Link from "next/link";
 
 export default function Footer() {
@@ -35,18 +33,31 @@ export default function Footer() {
     </Link>
   ));
 
+  const servicesLinks = svLinks.map((link) => (
+    <li key={link.title}>
+      <Link
+        href={link.href}
+        className="text-gray-300 hover:text-primary transition-colors"
+      >
+        {link.title}
+      </Link>
+    </li>
+  ));
+
   return (
     <footer id="contact" className="bg-[#1F1F1F] text-white py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid md:grid-cols-4 gap-8">
           <div>
-            <Image
-              src="/logo-lg.png"
-              alt="Prism Partners"
-              width={273}
-              height={142}
-              className="h-18 w-auto"
-            />
+            <Link href="/">
+              <Image
+                src="/logo-lg.png"
+                alt="Prism Partners"
+                width={273}
+                height={142}
+                className="h-18 w-auto"
+              />
+            </Link>
             <p className="text-gray-300 mb-4">
               Your trusted construction partner. Building dreams, creating
               futures.
@@ -65,48 +76,15 @@ export default function Footer() {
                 Services
               </Link>
             </h3>
-            <ul className="space-y-2">
-              <li>
-                <Link
-                  href="/services#architectural-design"
-                  className="text-gray-300 hover:text-primary transition-colors"
-                >
-                  Architectural Design
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/services#construction"
-                  className="text-gray-300 hover:text-primary transition-colors"
-                >
-                  Construction
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/services#interior-design"
-                  className="text-gray-300 hover:text-primary transition-colors"
-                >
-                  Interior Design
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/services"
-                  className="text-gray-300 hover:text-primary transition-colors"
-                >
-                  Project Management
-                </Link>
-              </li>
-            </ul>
+            <ul className="space-y-2">{servicesLinks}</ul>
           </div>
 
           <div>
             <h3 className="text-lg font-semibold mb-4">Contact Info</h3>
             <div className="space-y-3">
               <a
-                className="flex items-center"
-                href={`https://api.whatsapp.com/send/?phone=${contactInfo.mobile.number}&text&type=phone_number&app_absent=0`}
+                className="flex items-center hover:underline"
+                href={contactInfo.mobile.whatsappLink}
                 target="_blank"
               >
                 <Phone className="w-5 h-5 text-primary mr-3" />
@@ -114,16 +92,25 @@ export default function Footer() {
                   {contactInfo.mobile.formatted}
                 </span>
               </a>
-              <a className="flex items-center">
+              <a
+                className="flex items-center hover:underline"
+                href={`mailto:${contactInfo.email}`}
+              >
                 <Mail className="w-5 h-5 text-primary mr-3" />
                 <span className="text-gray-300">{contactInfo.email}</span>
               </a>
               <div className="flex items-start">
                 <MapPin className="w-5 h-5 text-primary mr-3 shrink-0 mt-1" />
                 <span className="text-gray-300">
-                  {contactInfo.addresses.map(({ type, address }) => (
+                  {contactInfo.addresses.map(({ type, address, mapLink }) => (
                     <span key={address}>
-                      {type}: {address}
+                      <a
+                        href={mapLink}
+                        target="_blank"
+                        className="hover:underline"
+                      >
+                        {type}: {address}
+                      </a>
                       <br />
                       <br />
                     </span>
@@ -135,9 +122,18 @@ export default function Footer() {
         </div>
 
         <div className="border-t border-gray-700 mt-12 pt-8 text-center">
-          <p className="text-gray-300">
-            © {currentYear} Prism Partners. All rights reserved. | Privacy
-            Policy | Terms of Service
+          <p>
+            © {currentYear}{" "}
+            <Link href="/" className="underline font-semibold">
+              Prism Partners
+            </Link>
+            . All rights reserved.
+          </p>
+          <p className="text-gray-300 text-sm mt-2">
+            Developed by{" "}
+            <a href={developerInfo.contact} className="underline">
+              {developerInfo.name}
+            </a>
           </p>
         </div>
       </div>
