@@ -3,8 +3,10 @@
 import { X, Menu } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { ReactNode, useState } from "react";
 import { navLinks } from "@/lib/constants";
+import { usePathname } from "next/navigation";
+import { cn } from "@/lib/utils";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -27,8 +29,8 @@ export default function Header() {
               <Image
                 src="/logo-sm.png"
                 alt="Prism Partners"
-                width={273}
-                height={142}
+                width={120}
+                height={120}
                 className="h-12 w-auto block sm:hidden"
               />
             </Link>
@@ -37,22 +39,22 @@ export default function Header() {
           {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-8">
             {navLinks.map((link) => (
-              <Link
+              <NavLink
                 key={link.href}
                 href={link.href}
-                className="text-gray-900 hover:text-primary transition-colors font-medium"
+                className="font-medium relative after:content-[''] after:absolute after:left-0 after:bottom-[-4px] after:h-[2px] after:w-0 after:bg-primary after:transition-all after:duration-300 hover:after:w-full"
               >
                 {link.title}
-              </Link>
+              </NavLink>
             ))}
           </nav>
 
           {/* CTA Button */}
           <div className="hidden md:block">
             <Link href="/quote">
-              <button className="bg-primary text-white px-6 py-2 rounded-lg font-semibold hover:bg-destructive transition-colors hover:cursor-pointer">
+              <button className="bg-primary text-white px-6 py-2 rounded-lg font-semibold hover:bg-destructive transition-colors">
                 Get Free Quote
-              </button>{" "}
+              </button>
             </Link>
           </div>
 
@@ -72,16 +74,16 @@ export default function Header() {
           <div className="md:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1 bg-white border-t">
               {navLinks.map((link) => (
-                <Link
+                <NavLink
                   key={link.href}
                   href={link.href}
-                  className="block px-3 py-2 text-gray-900 hover:text-primary transition-colors font-medium"
+                  className="block px-3 py-2 text-gray-900 hover:text-primary font-medium"
+                  onClick={() => setIsMenuOpen(false)} // ✅ Close menu on click
                 >
                   {link.title}
-                </Link>
+                </NavLink>
               ))}
-
-              <Link href="/quote">
+              <Link href="/quote" onClick={() => setIsMenuOpen(false)}>
                 <button className="w-full mt-4 bg-primary text-white px-6 py-2 rounded-lg font-semibold hover:bg-destructive transition-colors">
                   Get Free Quote
                 </button>
@@ -91,5 +93,35 @@ export default function Header() {
         )}
       </div>
     </header>
+  );
+}
+
+function NavLink({
+  children,
+  href,
+  className,
+  onClick,
+}: {
+  children: ReactNode;
+  href: string;
+  className?: string;
+  onClick?: () => void;
+}) {
+  const pathname = usePathname();
+  const isActive = href === "/" ? pathname === "/" : pathname.startsWith(href);
+
+  return (
+    <Link
+      href={href}
+      onClick={onClick}
+      aria-current={isActive ? "page" : undefined}
+      className={cn(
+        "relative transition-colors hover:text-primary",
+        className,
+        isActive && "text-primary font-semibold after:w-full after:bg-primary"
+      )}
+    >
+      {children}
+    </Link>
   );
 }
