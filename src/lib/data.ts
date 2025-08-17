@@ -81,3 +81,45 @@ export const testimonials = [
       "https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=150",
   },
 ];
+
+export const services = [
+  {
+    title: "Architectural Design",
+    breifDescription:
+      "Our architectural design services combine creativity with functionality to create spaces that inspire. From initial concept sketches to detailed blueprints, our experienced architects work closely with you to understand your vision and translate it into stunning, practical designs.",
+    comprehensives: [
+      "Custom residential and commerical design slutions",
+      "3D modeling and visualization services",
+      "Sustainable and energy-efficient design principles",
+      "Building code compliance and permit assistance",
+    ],
+    image:
+      "https://images.pexels.com/photos/3862132/pexels-photo-3862132.jpeg?auto=compress&cs=tinysrgb&w=800",
+  },
+  {
+    title: "Construction",
+    breifDescription:
+      "With decades of experience in the construction industry, we deliver projects that exceed expectations. Our skilled craftsmen and project managers ensure every detail is executed to perfection, using only the highest quality materials and proven construction techniques.",
+    comprehensives: [
+      "New construction and major renovations",
+      "Commercial and residential projects",
+      "Quality materials and skilled craftsmanship",
+      "On-time delivery and budget management",
+    ],
+    image:
+      "https://images.pexels.com/photos/1216589/pexels-photo-1216589.jpeg?auto=compress&cs=tinysrgb&w=800",
+  },
+  {
+    title: "Interior Design",
+    breifDescription:
+      "Transform your space into a reflection of your style and personality. Our interior design team creates beautiful, functional environments that enhance your daily life. From concept to completion, we handle every detail to ensure your space is both stunning and practical.",
+    comprehensives: [
+      "Complete interior design and space planning",
+      "Custom furniture and fixture selection",
+      "Color schemes and material coordination",
+      "Lighting design and installation",
+    ],
+    image:
+      "https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=800",
+  },
+];
