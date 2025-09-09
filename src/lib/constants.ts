@@ -28,8 +28,8 @@ export const servicesLinks = [
 
 export const contactInfo = {
   mobile: {
-    formatted: "",
-    number: "01919127003",
+    formatted: [""],
+    numbers: ["01919127003"],
     whatsappLink: "",
   },
   email: "info@prismpartners.site",
@@ -38,17 +38,21 @@ export const contactInfo = {
       type: "Main Office",
       address: "0589-00, Mission Road, Chandpur-3600",
       mapLink: "",
+      embedSrc: "",
     },
     {
       type: "Branch Office",
       address: "115/6/1 Niketon, Dhaka-1212",
       mapLink: "",
+      embedSrc: "",
     },
   ],
 };
 
-contactInfo.mobile.whatsappLink = `https://wa.me/88${contactInfo.mobile.number}`;
-contactInfo.mobile.formatted = formatNumber(contactInfo.mobile.number);
+contactInfo.mobile.whatsappLink = `https://wa.me/88${contactInfo.mobile.numbers[0]}`;
+contactInfo.mobile.formatted = contactInfo.mobile.numbers.map((n) =>
+  formatNumber(n)
+);
 
 function formatNumber(number: string) {
   const newNum = "(+88) " + number.slice(0, 5) + "-" + number.slice(5);

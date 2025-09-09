@@ -89,7 +89,7 @@ export default function Footer() {
               >
                 <Phone className="w-5 h-5 text-primary mr-3" />
                 <span className="text-gray-300">
-                  {contactInfo.mobile.formatted}
+                  {contactInfo.mobile.formatted[0]}
                 </span>
               </a>
               <a

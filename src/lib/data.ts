@@ -85,6 +85,7 @@ export const testimonials = [
 export const services = [
   {
     title: "Architectural Design",
+    url: "architectural-design",
     breifDescription:
       "Our architectural design services combine creativity with functionality to create spaces that inspire. From initial concept sketches to detailed blueprints, our experienced architects work closely with you to understand your vision and translate it into stunning, practical designs.",
     comprehensives: [
@@ -98,6 +99,7 @@ export const services = [
   },
   {
     title: "Construction",
+    url: "construction",
     breifDescription:
       "With decades of experience in the construction industry, we deliver projects that exceed expectations. Our skilled craftsmen and project managers ensure every detail is executed to perfection, using only the highest quality materials and proven construction techniques.",
     comprehensives: [
@@ -111,6 +113,7 @@ export const services = [
   },
   {
     title: "Interior Design",
+    url: "interior-design",
     breifDescription:
       "Transform your space into a reflection of your style and personality. Our interior design team creates beautiful, functional environments that enhance your daily life. From concept to completion, we handle every detail to ensure your space is both stunning and practical.",
     comprehensives: [

@@ -25,7 +25,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${poppins.variable} ${inter.variable} font-sans`}>
+      <body
+        className={`${poppins.variable} ${inter.variable} font-sans selection:bg-destructive selection:text-gray-50`}
+      >
         <Header />
         <main>
           {children}
