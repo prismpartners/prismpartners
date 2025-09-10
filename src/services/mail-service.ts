@@ -1,6 +1,8 @@
 "use server";
 
 import nodemailer from "nodemailer";
+import Mail from "nodemailer/lib/mailer";
+import SMTPTransport from "nodemailer/lib/smtp-transport";
 import * as z from "zod/mini";
 import { $ZodFlattenedError } from "zod/v4/core";
 
@@ -37,31 +39,24 @@ const MessageSchema = z.omit(FormSchema, {
 export type MessageData = z.infer<typeof MessageSchema>;
 
 
-type SendMessageStateType = {
-  data: MessageData | null;
+type SendEmailStateType<T> = {
+  data: T | null;
   success: boolean;
   errors: null | $ZodFlattenedError<MessageData, string>;
 }
 
 export async function sendMessage(
-  prevState: SendMessageStateType,
+  prevState: SendEmailStateType<MessageData>,
   formData: FormData
-): Promise<SendMessageStateType> {
-  const recievedData = { ...Object.fromEntries(formData) } as MessageData
+): Promise<SendEmailStateType<MessageData>> {
 
-  try {
-    const messageData = MessageSchema.parse(recievedData);
+  return sendEmail<MessageData>(formData, MessageSchema, (messageData: MessageData) => ({
+    from: `"Reach to Prism Partners" <${process.env.EMAIL_FROM}>`,
+    cc: messageData.email,
+    to: process.env.EMAIL_TO,
+    subject: `Service Inquiry: ${messageData.serviceType} — From ${messageData.name}`,
 
-
-    const subject = `Service Inquiry: ${messageData.serviceType} — From ${messageData.name}`;
-
-    await transporter.sendMail({
-      from: `"Reach to Prism Partners" <${process.env.EMAIL_FROM}>`,
-      cc: messageData.email,
-      to: process.env.EMAIL_TO,
-      subject,
-
-      text: `
+    text: `
         You have received a new service inquiry.
         
         Details:
@@ -77,7 +72,7 @@ export async function sendMessage(
         This email was sent via the Reach to Prism Partners contact form.
       `,
 
-      html: `
+    html: `
         <h2>New Service Inquiry</h2>
         <p><strong>Name:</strong> ${messageData.name}</p>
         <p><strong>Email:</strong> <a href="mailto:${messageData.email}">${messageData.email}</a></p>
@@ -89,7 +84,20 @@ export async function sendMessage(
         <hr>
         <small>This email was sent via the Reach to Prism Partners contact form.</small>
       `,
-    });
+  }))
+}
+
+export async function sendEmail<T>(
+  formData: FormData,
+  Schema: z.ZodMiniObject,
+  generateEmail: (data: T) => Mail.Options & Partial<SMTPTransport.Options>
+): Promise<SendEmailStateType<T>> {
+  const recievedData = { ...Object.fromEntries(formData) } as T
+
+  try {
+    const data = Schema.parse(recievedData) as T;
+
+    await transporter.sendMail(generateEmail(data));
 
     return { data: null, success: true, errors: null };
   } catch (error) {
