@@ -4,25 +4,73 @@ export const projects = [
     title: "Modern Villa Complex",
     location: "Beverly Hills, CA",
     duration: "8 months",
-    image:
-      "https://images.pexels.com/photos/1396122/pexels-photo-1396122.jpeg?auto=compress&cs=tinysrgb&w=800",
+    category: "Residential",
+    image: "https://images.pexels.com/photos/1396122/pexels-photo-1396122.jpeg?auto=compress&cs=tinysrgb&w=800",
+    description: "Luxury residential complex featuring modern architecture and sustainable design elements."
   },
   {
     id: 2,
     title: "Corporate Office Tower",
     location: "Downtown LA, CA",
     duration: "14 months",
-    image:
-      "https://images.pexels.com/photos/2219024/pexels-photo-2219024.jpeg?auto=compress&cs=tinysrgb&w=800",
+    category: "Commercial",
+    image: "https://images.pexels.com/photos/2219024/pexels-photo-2219024.jpeg?auto=compress&cs=tinysrgb&w=800",
+    description: "State-of-the-art office building with innovative workspace design and energy-efficient systems."
   },
   {
     id: 3,
-    title: "Luxury Residential",
+    title: "Luxury Residential Estate",
     location: "Malibu, CA",
     duration: "6 months",
-    image:
-      "https://images.pexels.com/photos/1643383/pexels-photo-1643383.jpeg?auto=compress&cs=tinysrgb&w=800",
+    category: "Residential",
+    image: "https://images.pexels.com/photos/1643383/pexels-photo-1643383.jpeg?auto=compress&cs=tinysrgb&w=800",
+    description: "Oceanfront estate with contemporary design and premium finishes throughout."
   },
+  {
+    id: 4,
+    title: "Shopping Center Renovation",
+    location: "Santa Monica, CA",
+    duration: "10 months",
+    category: "Commercial",
+    image: "https://images.pexels.com/photos/2102587/pexels-photo-2102587.jpeg?auto=compress&cs=tinysrgb&w=800",
+    description: "Complete renovation of retail space with modern amenities and improved customer flow."
+  },
+  {
+    id: 5,
+    title: "Contemporary Family Home",
+    location: "Pasadena, CA",
+    duration: "5 months",
+    category: "Residential",
+    image: "https://images.pexels.com/photos/1396132/pexels-photo-1396132.jpeg?auto=compress&cs=tinysrgb&w=800",
+    description: "Custom family home featuring open-concept design and smart home technology."
+  },
+  {
+    id: 6,
+    title: "Medical Center Expansion",
+    location: "West Hollywood, CA",
+    duration: "12 months",
+    category: "Healthcare",
+    image: "https://images.pexels.com/photos/236380/pexels-photo-236380.jpeg?auto=compress&cs=tinysrgb&w=800",
+    description: "Modern medical facility expansion with advanced equipment and patient-centered design."
+  },
+  {
+    id: 7,
+    title: "Boutique Hotel Interior",
+    location: "Venice Beach, CA",
+    duration: "4 months",
+    category: "Hospitality",
+    image: "https://images.pexels.com/photos/271618/pexels-photo-271618.jpeg?auto=compress&cs=tinysrgb&w=800",
+    description: "Luxury hotel interior design with coastal-inspired themes and premium amenities."
+  },
+  {
+    id: 8,
+    title: "Industrial Warehouse",
+    location: "Long Beach, CA",
+    duration: "7 months",
+    category: "Industrial",
+    image: "https://images.pexels.com/photos/1216589/pexels-photo-1216589.jpeg?auto=compress&cs=tinysrgb&w=800",
+    description: "Modern warehouse facility with efficient logistics design and sustainable features."
+  }
 ];
 
 export const testimonials = [
