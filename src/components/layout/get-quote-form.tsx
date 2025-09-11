@@ -3,8 +3,7 @@
 import { services } from "@/lib/data";
 import { cn } from "@/lib/utils";
 import { GetQouteFormData, sendGetQuoteMessage } from "@/services/mail-service";
-import { stat } from "fs";
-import { CheckCircle, LoaderCircle, XCircle } from "lucide-react";
+import { CheckCircle, LoaderCircle } from "lucide-react";
 import { useActionState, useEffect, useState } from "react";
 
 
@@ -71,7 +70,7 @@ export default function GetFreeQuoteForm() {
               Get Your Free Quote
             </h2>
             <p className="text-lg text-gray-600">
-              Fill out the form and we"ll get back to you within 24 hours.
+              Fill out the form and we&apos;ll get back to you within 24 hours.
             </p>
           </div>
 
