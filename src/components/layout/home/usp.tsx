@@ -50,7 +50,7 @@ export default function USP() {
   );
 }
 
-function USPCard({ children }: { children: ReactNode }) {
+export function USPCard({ children }: { children: ReactNode }) {
   return (
     <div className="text-center p-8 bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow">
       {children}
@@ -58,7 +58,7 @@ function USPCard({ children }: { children: ReactNode }) {
   );
 }
 
-function USPIcon({ children }: { children: ReactNode }) {
+export function USPIcon({ children }: { children: ReactNode }) {
   return (
     <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-6">
       {children}
@@ -66,12 +66,12 @@ function USPIcon({ children }: { children: ReactNode }) {
   );
 }
 
-function USPTitle({ children }: { children: ReactNode }) {
+export function USPTitle({ children }: { children: ReactNode }) {
   return (
     <h3 className="text-xl font-semibold text-gray-900 mb-4">{children}</h3>
   );
 }
 
-function USPDesc({ children }: { children: ReactNode }) {
+export function USPDesc({ children }: { children: ReactNode }) {
   return <p className="text-gray-600">{children}</p>;
 }

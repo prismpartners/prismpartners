@@ -42,7 +42,7 @@ export type MessageData = z.infer<typeof MessageSchema>;
 type SendEmailStateType<T> = {
   data: T | null;
   success: boolean;
-  errors: null | $ZodFlattenedError<MessageData, string>;
+  errors: null | $ZodFlattenedError<T, string>;
 }
 
 export async function sendMessage(
@@ -84,6 +84,89 @@ export async function sendMessage(
         <hr>
         <small>This email was sent via the Reach to Prism Partners contact form.</small>
       `,
+  }))
+}
+
+const GetQuoteSchema = z.omit(FormSchema, {
+  message: true,
+});
+
+export type GetQouteFormData = z.infer<typeof GetQuoteSchema>;
+
+export async function sendGetQuoteMessage(
+  prevState: SendEmailStateType<GetQouteFormData>,
+  formData: FormData
+): Promise<SendEmailStateType<GetQouteFormData>> {
+
+  return sendEmail<GetQouteFormData>(formData, GetQuoteSchema, (getQuoteFormData: GetQouteFormData) => ({
+    from: `"Get Quote From Prism Partners" <${process.env.EMAIL_FROM}>`,
+    cc: getQuoteFormData.email,
+    to: process.env.EMAIL_TO,
+    subject: `Service Inquiry: ${getQuoteFormData.serviceType} — From ${getQuoteFormData.name}`,
+
+    text: `
+      You have received a new quote request.
+      
+      Client Details:
+      - Name: ${getQuoteFormData.name}
+      - Email: ${getQuoteFormData.email}
+      - Phone: ${getQuoteFormData.phone}
+      - Service Type: ${getQuoteFormData.serviceType}
+      - Project Location: ${getQuoteFormData.projectLocation}
+      - Budget Range: ${getQuoteFormData.budgetRange}
+      
+      Project Details:
+      ${getQuoteFormData.projectDetails}
+      
+      -------------------------
+      This email was generated from the Get Quote form on your website.
+    `,
+
+    html: `
+      <div style="font-family: Arial, sans-serif; color: #333; line-height: 1.6;">
+        <h2 style="color: #2c3e50;">📩 New Quote Request</h2>
+        
+        <h3 style="margin-bottom: 8px;">Client Details</h3>
+        <table style="border-collapse: collapse; width: 100%; margin-bottom: 16px;">
+          <tr>
+            <td style="padding: 6px 12px; font-weight: bold;">Name:</td>
+            <td style="padding: 6px 12px;">${getQuoteFormData.name}</td>
+          </tr>
+          <tr>
+            <td style="padding: 6px 12px; font-weight: bold;">Email:</td>
+            <td style="padding: 6px 12px;">
+              <a href="mailto:${getQuoteFormData.email}" style="color: #3498db;">${getQuoteFormData.email}</a>
+            </td>
+          </tr>
+          <tr>
+            <td style="padding: 6px 12px; font-weight: bold;">Phone:</td>
+            <td style="padding: 6px 12px;">${getQuoteFormData.phone}</td>
+          </tr>
+          <tr>
+            <td style="padding: 6px 12px; font-weight: bold;">Service Type:</td>
+            <td style="padding: 6px 12px;">${getQuoteFormData.serviceType}</td>
+          </tr>
+          <tr>
+            <td style="padding: 6px 12px; font-weight: bold;">Project Location:</td>
+            <td style="padding: 6px 12px;">${getQuoteFormData.projectLocation}</td>
+          </tr>
+          <tr>
+            <td style="padding: 6px 12px; font-weight: bold;">Budget Range:</td>
+            <td style="padding: 6px 12px;">${getQuoteFormData.budgetRange}</td>
+          </tr>
+        </table>
+    
+        <h3 style="margin-bottom: 8px;">Project Details</h3>
+        <p style="background: #f9f9f9; padding: 12px; border-radius: 6px; white-space: pre-line;">
+          ${getQuoteFormData.projectDetails}
+        </p>
+    
+        <hr style="margin: 24px 0; border: none; border-top: 1px solid #eee;">
+        <p style="font-size: 12px; color: #777;">
+          This email was generated from the <strong>Get Quote</strong> form on your website.
+        </p>
+      </div>
+    `,
   }))
 }
 
