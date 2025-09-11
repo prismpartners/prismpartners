@@ -51,7 +51,7 @@ export default function Header() {
 
           {/* CTA Button */}
           <div className="hidden md:block">
-            <Link href="/quote">
+            <Link href="/get-free-quote">
               <button className="bg-primary text-white px-6 py-2 rounded-lg font-semibold hover:bg-destructive transition-colors">
                 Get Free Quote
               </button>
@@ -83,7 +83,7 @@ export default function Header() {
                   {link.title}
                 </NavLink>
               ))}
-              <Link href="/quote" onClick={() => setIsMenuOpen(false)}>
+              <Link href="/get-free-quote" onClick={() => setIsMenuOpen(false)}>
                 <button className="w-full mt-4 bg-primary text-white px-6 py-2 rounded-lg font-semibold hover:bg-destructive transition-colors">
                   Get Free Quote
                 </button>
