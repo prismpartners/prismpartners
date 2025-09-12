@@ -1,3 +1,5 @@
+import { CheckCircle, Award, Users, Clock } from "lucide-react";
+
 export const projects = [
   {
     id: 1,
@@ -173,4 +175,61 @@ export const services = [
     image:
       "https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=800",
   },
+];
+
+export const teamMembers = [
+  {
+    name: "Michael Rodriguez",
+    role: "CEO & Founder",
+    bio: "With over 15 years in construction and real estate development, Michael founded Prism Partners to revolutionize the construction experience.",
+    image: "https://images.pexels.com/photos/2182970/pexels-photo-2182970.jpeg?auto=compress&cs=tinysrgb&w=400"
+  },
+  {
+    name: "Sarah Chen",
+    role: "Chief Architect",
+    bio: "Award-winning architect with expertise in sustainable design and modern construction techniques. Sarah leads our design innovation.",
+    image: "https://images.pexels.com/photos/3756679/pexels-photo-3756679.jpeg?auto=compress&cs=tinysrgb&w=400"
+  },
+  {
+    name: "David Thompson",
+    role: "Head of Construction",
+    bio: "Master craftsman with 20+ years of experience managing complex construction projects from residential to commercial developments.",
+    image: "https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=400"
+  },
+  {
+    name: "Emily Foster",
+    role: "Interior Design Director",
+    bio: "Creative visionary specializing in luxury interiors and space optimization. Emily transforms spaces into stunning, functional environments.",
+    image: "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=400"
+  }
+];
+
+export const coreValues = [
+  {
+    icon: CheckCircle,
+    title: "Integrity",
+    description: "We conduct business with honesty, transparency, and ethical practices in every interaction."
+  },
+  {
+    icon: Award,
+    title: "Quality Excellence",
+    description: "We never compromise on quality, using premium materials and skilled craftsmanship in every project."
+  },
+  {
+    icon: Users,
+    title: "Client-First Approach",
+    description: "Your vision and satisfaction drive everything we do. We listen, understand, and deliver beyond expectations."
+  },
+  {
+    icon: Clock,
+    title: "Reliability",
+    description: "We respect your time and budget, delivering projects on schedule and within agreed parameters."
+  }
+];
+
+export const achievements = [
+  { number: "500+", label: "Projects Completed" },
+  { number: "15+", label: "Years Experience" },
+  { number: "98%", label: "Client Satisfaction" },
+  { number: "50+", label: "Team Members" }
 ];
